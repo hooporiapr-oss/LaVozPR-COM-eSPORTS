@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>La Voz Esports Training — Cognitive Performance for Gamers</title>
+    <meta name="description" content="Five cognitive training games powered by Ritnome™ BPM technology. Train your reaction time, memory, visual processing, and decision-making. Built for competitive gamers.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #0a0a0f;
+            --card: #111118;
+            --card2: #16161f;
+            --gold: #FFD700;
+            --orange: #FF6B35;
+            --teal: #00D9A5;
+            --purple: #9B59B6;
+            --cyan: #00CED1;
+            --lime: #9ACD32;
+            --pink: #FF1493;
+            --white: #f0f0f0;
+            --muted: #8892a0;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* NOISE */
+        body::before {
+            content: '';
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 9999;
+        }
+
+        /* LANG */
+        span.es { display: none; }
+        body.lang-es span.es { display: inline; }
+        body.lang-es span.en { display: none; }
+
+        .lang-toggle {
+            position: fixed; top: 14px; right: 14px; z-index: 1000;
+            display: flex; gap: 3px; background: var(--card); padding: 3px;
+            border-radius: 8px; border: 1px solid var(--border);
+        }
+        .lang-btn {
+            padding: 5px 10px; border: none; background: transparent;
+            color: var(--muted); border-radius: 6px; font-size: 0.7rem;
+            font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif;
+            letter-spacing: 1px; transition: all 0.2s;
+        }
+        .lang-btn.active { background: var(--gold); color: var(--dark); }
+
+        /* CONTAINER */
+        .wrap { max-width: 500px; margin: 0 auto; padding: 60px 20px 40px; }
+
+        /* HEADER */
+        .header { text-align: center; margin-bottom: 35px; }
+        .header-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px; border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            background: rgba(255, 215, 0, 0.06);
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+        }
+        .header-badge .dot {
+            width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.2rem, 8vw, 3rem);
+            letter-spacing: 4px; line-height: 1;
+            margin-bottom: 4px;
+        }
+        .header h1 .gold { color: var(--gold); }
+        .header-sub {
+            font-size: 0.8rem; color: var(--muted); font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .header-line {
+            width: 50px; height: 2px; margin: 16px auto;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .header-desc {
+            font-size: 0.85rem; color: var(--muted); line-height: 1.6;
+            max-width: 380px; margin: 0 auto; font-weight: 300;
+        }
+
+        /* RITNOME BADGE */
+        .ritnome-bar {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            padding: 12px 16px; background: var(--card);
+            border: 1px solid rgba(255, 215, 0, 0.1); border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        .ritnome-label {
+            font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem;
+            letter-spacing: 3px; color: var(--gold);
+        }
+        .ritnome-speeds { display: flex; gap: 6px; }
+        .ritnome-speed {
+            padding: 4px 10px; border-radius: 6px; font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.7rem; letter-spacing: 1px;
+        }
+        .speed-60 { background: rgba(0, 217, 165, 0.12); color: var(--teal); }
+        .speed-90 { background: rgba(255, 215, 0, 0.12); color: var(--gold); }
+        .speed-120 { background: rgba(255, 107, 53, 0.12); color: var(--orange); }
+
+        /* GAMES GRID */
+        .games-label {
+            font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem;
+            letter-spacing: 3px; color: var(--muted); margin-bottom: 12px;
+            padding-left: 4px;
+        }
+
+        .game-card {
+            display: flex; align-items: center; gap: 16px;
+            background: var(--card); border: 2px solid var(--border);
+            border-radius: 16px; padding: 18px 16px; margin-bottom: 10px;
+            text-decoration: none; color: var(--white);
+            transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .game-card::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 4px; background: var(--gc); opacity: 0; transition: opacity 0.3s;
+        }
+        .game-card:hover { transform: translateX(4px); border-color: rgba(255,255,255,0.12); }
+        .game-card:hover::before { opacity: 1; }
+        .game-card:active { transform: scale(0.98); }
+
+        .game-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; flex-shrink: 0; position: relative;
+        }
+        .game-info { flex: 1; min-width: 0; }
+        .game-name {
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
+            letter-spacing: 2px; margin-bottom: 2px;
+        }
+        .game-type {
+            font-size: 0.7rem; color: var(--muted); font-weight: 500;
+            line-height: 1.4;
+        }
+        .game-arrow {
+            font-size: 1.1rem; color: var(--muted); flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .game-card:hover .game-arrow { transform: translateX(4px); }
+
+        /* GAME SPECIFIC COLORS */
+        .g-react { --gc: var(--purple); }
+        .g-react .game-icon { background: rgba(155, 89, 182, 0.12); }
+        .g-react .game-name { color: var(--purple); }
+
+        .g-recall { --gc: var(--orange); }
+        .g-recall .game-icon { background: rgba(255, 107, 53, 0.12); }
+        .g-recall .game-name { color: var(--orange); }
+
+        .g-reflex { --gc: var(--cyan); }
+        .g-reflex .game-icon { background: rgba(0, 206, 209, 0.12); }
+        .g-reflex .game-name { color: var(--cyan); }
+
+        .g-replay { --gc: var(--teal); }
+        .g-replay .game-icon { background: rgba(0, 217, 165, 0.12); }
+        .g-replay .game-name { color: var(--teal); }
+
+        .g-ritmo { --gc: var(--lime); }
+        .g-ritmo .game-icon { background: rgba(154, 205, 50, 0.12); }
+        .g-ritmo .game-name { color: var(--lime); }
+
+        /* SKILLS SECTION */
+        .skills-section { margin: 35px 0; }
+        .skills-label {
+            font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem;
+            letter-spacing: 3px; color: var(--muted); margin-bottom: 12px;
+            padding-left: 4px;
+        }
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+        }
+        .skill-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 14px 8px; text-align: center;
+        }
+        .skill-icon { font-size: 1.4rem; margin-bottom: 4px; display: block; }
+        .skill-name {
+            font-size: 0.6rem; font-weight: 700; color: var(--muted);
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: var(--card); border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 16px; padding: 24px; text-align: center;
+            margin: 30px 0; position: relative; overflow: hidden;
+        }
+        .cta-banner::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 2px; background: linear-gradient(90deg, var(--gold), var(--orange));
+        }
+        .cta-title {
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+            letter-spacing: 2px; margin-bottom: 6px;
+        }
+        .cta-desc {
+            font-size: 0.8rem; color: var(--muted); margin-bottom: 14px;
+            line-height: 1.5;
+        }
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: var(--dark); font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem; letter-spacing: 2px; border-radius: 30px;
+            text-decoration: none; transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(255, 215, 0, 0.4); }
+
+        /* FOOTER */
+        .footer {
+            text-align: center; padding: 30px 0 20px;
+            border-top: 1px solid var(--border); margin-top: 20px;
+        }
+        .footer-brand {
+            font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+            letter-spacing: 4px; color: var(--muted); margin-bottom: 4px;
+        }
+        .footer-brand .gold { color: var(--gold); }
+        .footer-sub { font-size: 0.65rem; color: rgba(255,255,255,0.2); margin-bottom: 8px; }
+        .footer-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+        .footer-links a { font-size: 0.7rem; color: var(--muted); text-decoration: none; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-copy { font-size: 0.55rem; color: rgba(255,255,255,0.15); }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .anim { opacity: 0; animation: fadeUp 0.5s ease-out forwards; }
+        .d1 { animation-delay: 0.05s; }
+        .d2 { animation-delay: 0.1s; }
+        .d3 { animation-delay: 0.15s; }
+        .d4 { animation-delay: 0.2s; }
+        .d5 { animation-delay: 0.25s; }
+        .d6 { animation-delay: 0.3s; }
+        .d7 { animation-delay: 0.35s; }
+        .d8 { animation-delay: 0.4s; }
+        .d9 { animation-delay: 0.45s; }
+        .d10 { animation-delay: 0.5s; }
+
+        @media (max-width: 400px) {
+            .header h1 { font-size: 2rem; }
+            .game-card { padding: 14px 12px; }
+            .game-icon { width: 44px; height: 44px; font-size: 1.3rem; }
+            .skills-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+</div>
+
+<div class="wrap">
+
+    <!-- HEADER -->
+    <div class="header anim d1">
+        <div class="header-badge"><span class="dot"></span> <span class="en">COGNITIVE PERFORMANCE TRAINING</span><span class="es">ENTRENAMIENTO COGNITIVO</span></div>
+        <h1><span class="gold">LA VOZ</span> ESPORTS<br>TRAINING</h1>
+        <p class="header-sub"><span class="en">Powered by Ritnome™ BPM Technology</span><span class="es">Impulsado por Tecnología Ritnome™ BPM</span></p>
+        <div class="header-line"></div>
+        <p class="header-desc">
+            <span class="en">Five purpose-built cognitive training games that sharpen the mental skills competitive gamers need. Reaction time. Memory. Visual processing. Decision-making under pressure.</span>
+            <span class="es">Cinco juegos de entrenamiento cognitivo diseñados para agudizar las habilidades mentales que necesitan los gamers competitivos. Tiempo de reacción. Memoria. Procesamiento visual. Toma de decisiones bajo presión.</span>
+        </p>
+    </div>
+
+    <!-- RITNOME BAR -->
+    <div class="ritnome-bar anim d2">
+        <span class="ritnome-label">RITNOME™</span>
+        <div class="ritnome-speeds">
+            <span class="ritnome-speed speed-60">60 BPM</span>
+            <span class="ritnome-speed speed-90">90 BPM</span>
+            <span class="ritnome-speed speed-120">120 BPM</span>
+        </div>
+    </div>
+
+    <!-- GAMES -->
+    <div class="games-label anim d3">🧠 <span class="en">TRAINING GAMES</span><span class="es">JUEGOS DE ENTRENAMIENTO</span></div>
+
+    <a href="the-react.html" class="game-card g-react anim d4">
+        <div class="game-icon">⚡</div>
+        <div class="game-info">
+            <div class="game-name">THE REACT</div>
+            <div class="game-type"><span class="en">Rhythm Reaction — Tap cells on the beat as they light up</span><span class="es">Reacción Rítmica — Toca las celdas al ritmo cuando se iluminan</span></div>
+        </div>
+        <span class="game-arrow">→</span>
+    </a>
+
+    <a href="the-recall.html" class="game-card g-recall anim d5">
+        <div class="game-icon">🧠</div>
+        <div class="game-info">
+            <div class="game-name">THE RECALL</div>
+            <div class="game-type"><span class="en">Number Recall — Memorize positions, tap back in order</span><span class="es">Recuerdo Numérico — Memoriza posiciones, toca en orden</span></div>
+        </div>
+        <span class="game-arrow">→</span>
+    </a>
+
+    <a href="the-reflex.html" class="game-card g-reflex anim d6">
+        <div class="game-icon">👁️</div>
+        <div class="game-info">
+            <div class="game-name">THE REFLEX</div>
+            <div class="game-type"><span class="en">Flash Memory — Multiple cells flash, find them all</span><span class="es">Memoria Visual — Varias celdas destellan, encuéntralas todas</span></div>
+        </div>
+        <span class="game-arrow">→</span>
+    </a>
+
+    <a href="the-replay.html" class="game-card g-replay anim d7">
+        <div class="game-icon">🔁</div>
+        <div class="game-info">
+            <div class="game-name">THE REPLAY</div>
+            <div class="game-type"><span class="en">Sequence Replay — Watch the sequence, replay it exactly</span><span class="es">Secuencia — Observa la secuencia, repítela exactamente</span></div>
+        </div>
+        <span class="game-arrow">→</span>
+    </a>
+
+    <a href="the-ritmo.html" class="game-card g-ritmo anim d8">
+        <div class="game-icon">👂</div>
+        <div class="game-info">
+            <div class="game-name">THE RITMO</div>
+            <div class="game-type"><span class="en">Spot the Change — Find what changed between two patterns</span><span class="es">Encuentra el Cambio — Descubre qué cambió entre dos patrones</span></div>
+        </div>
+        <span class="game-arrow">→</span>
+    </a>
+
+    <!-- SKILLS -->
+    <div class="skills-section anim d9">
+        <div class="skills-label"><span class="en">🎯 SKILLS TRAINED</span><span class="es">🎯 HABILIDADES ENTRENADAS</span></div>
+        <div class="skills-grid">
+            <div class="skill-card"><span class="skill-icon">⚡</span><span class="skill-name"><span class="en">Reaction Time</span><span class="es">Reacción</span></span></div>
+            <div class="skill-card"><span class="skill-icon">🧠</span><span class="skill-name"><span class="en">Memory</span><span class="es">Memoria</span></span></div>
+            <div class="skill-card"><span class="skill-icon">👁️</span><span class="skill-name"><span class="en">Visual Processing</span><span class="es">Proc. Visual</span></span></div>
+            <div class="skill-card"><span class="skill-icon">🎯</span><span class="skill-name"><span class="en">Focus</span><span class="es">Enfoque</span></span></div>
+            <div class="skill-card"><span class="skill-icon">🔄</span><span class="skill-name"><span class="en">Pattern Recognition</span><span class="es">Patrones</span></span></div>
+            <div class="skill-card"><span class="skill-icon">🏆</span><span class="skill-name"><span class="en">Clutch Decisions</span><span class="es">Decisiones</span></span></div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-banner anim d10">
+        <div class="cta-title"><span class="en">ESPORTS PROGRAMS FOR <span style="color:var(--gold)">SCHOOLS</span></span><span class="es">PROGRAMAS DE ESPORTS PARA <span style="color:var(--gold)">ESCUELAS</span></span></div>
+        <p class="cta-desc">
+            <span class="en">Bring cognitive performance training to your school. Team formation, competition, and a pathway to GAMERGY Puerto Rico.</span>
+            <span class="es">Lleva el entrenamiento cognitivo a tu escuela. Formación de equipos, competencia, y camino a GAMERGY Puerto Rico.</span>
+        </p>
+        <a href="tel:+17875581988" class="cta-btn">📞 <span class="en">CALL US</span><span class="es">LLÁMANOS</span></a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-brand"><span class="gold">LA VOZ</span> ESPORTS TRAINING</div>
+        <div class="footer-sub"><span class="en">Powered by Ritnome™ · GoStar Digital LLC · Puerto Rico</span><span class="es">Impulsado por Ritnome™ · GoStar Digital LLC · Puerto Rico</span></div>
+        <div class="footer-links">
+            <a href="https://lavozpr.com/esports.html">La Voz Esports</a>
+            <a href="https://lavozpr.com">La Voz PR</a>
+            <a href="https://lavozpr.com/vozline.html">VozLine</a>
+        </div>
+        <div class="footer-copy">© 2026 GoStar Digital LLC. All Rights Reserved. Ritnome™ is a trademark of GoStar Digital LLC.</div>
+    </footer>
+
+</div>
+
+<script>
+function setLang(lang) {
+    var btns = document.querySelectorAll('.lang-btn');
+    btns.forEach(function(b) { b.classList.remove('active'); });
+    if (lang === 'es') {
+        document.body.classList.add('lang-es');
+        btns[1].classList.add('active');
+    } else {
+        document.body.classList.remove('lang-es');
+        btns[0].classList.add('active');
+    }
+}
+</script>
+
+</body>
+</html>
