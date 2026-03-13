@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Voz Esports | Cognitive Training & School Programs</title>
+<meta name="description" content="Esports cognitive training games and school programs powered by La Voz PR. GAMERGY Puerto Rico partner. Train your brain. Compete at the next level.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#0a0a0f;--gold:#FFD700;--orange:#FF6B35;--teal:#00D9A5;--purple:#9B59B6;--cyan:#00CED1;--lime:#9ACD32;--white:#FFFFFF;--gray-100:#F3F4F6;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--card-bg:rgba(255,255,255,0.03);--card-border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--dark);color:var(--white);line-height:1.6;overflow-x:hidden}
+.bg-pattern{position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 20%,rgba(255,215,0,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(255,107,53,0.06) 0%,transparent 50%),var(--dark);z-index:-1}
+.nav{position:fixed;top:0;left:0;right:0;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(10,10,15,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--card-border)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:2px;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--gray-300);text-decoration:none;font-weight:500;font-size:0.9rem;transition:color 0.3s}
+.nav-links a:hover{color:var(--gold)}
+.lang-toggle{display:flex;gap:0.25rem;background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:4px}
+.lang-btn{padding:6px 12px;border:none;background:transparent;color:var(--gray-400);font-family:'Outfit',sans-serif;font-weight:600;font-size:0.75rem;border-radius:6px;cursor:pointer;transition:all 0.3s}
+.lang-btn.active{background:linear-gradient(135deg,var(--gold),var(--orange));color:#000}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.25rem;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);border-radius:50px;font-size:0.8rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:2rem}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,7rem);letter-spacing:4px;line-height:0.95;margin-bottom:1.5rem}
+.hero h1 .gold{background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1.1rem,2vw,1.4rem);color:var(--gray-300);max-width:650px;margin-bottom:2.5rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;background:linear-gradient(135deg,var(--gold),var(--orange));border:none;border-radius:50px;color:#000;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 20px rgba(255,215,0,0.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,215,0,0.4)}
+.btn-secondary{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;background:transparent;border:2px solid var(--teal);border-radius:50px;color:var(--teal);font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;text-decoration:none;transition:all 0.3s}
+.btn-secondary:hover{background:rgba(0,217,165,0.1);transform:translateY(-2px)}
+section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{display:inline-block;padding:0.5rem 1rem;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);border-radius:50px;font-size:0.75rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:2px;margin-bottom:1rem}
+.section-sub{font-size:1.1rem;color:var(--gray-400);max-width:600px}
+.games-section{padding:6rem 2rem;text-align:center}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1200px;margin:3rem auto 0}
+.game-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:2rem;text-align:center;transition:all 0.4s;position:relative;overflow:hidden;text-decoration:none;color:var(--white);display:block}
+.game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;opacity:0;transition:opacity 0.3s}
+.game-card:hover{transform:translateY(-8px);border-color:rgba(255,215,0,0.3)}
+.game-card:hover::before{opacity:1}
+.game-card.purple::before{background:var(--purple)}
+.game-card.orange::before{background:var(--orange)}
+.game-card.cyan::before{background:var(--cyan)}
+.game-card.teal::before{background:var(--teal)}
+.game-card.lime::before{background:var(--lime)}
+.game-icon{font-size:3rem;margin-bottom:1rem}
+.game-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:1px;margin-bottom:0.5rem}
+.game-card p{color:var(--gray-400);font-size:0.9rem;line-height:1.6;margin-bottom:1rem}
+.game-tag{display:inline-block;padding:0.4rem 0.8rem;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.2);border-radius:20px;font-size:0.7rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
+.schools-section{padding:6rem 2rem;background:linear-gradient(180deg,transparent,rgba(255,215,0,0.03),transparent)}
+.schools-inner{max-width:900px;margin:0 auto;text-align:center}
+.school-card{background:var(--card-bg);border:2px solid rgba(0,217,165,0.2);border-radius:24px;padding:3rem 2rem;margin-top:3rem;position:relative;overflow:hidden}
+.school-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--gold))}
+.school-icon{font-size:4rem;margin-bottom:1.5rem}
+.school-card h3{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:2px;margin-bottom:1rem}
+.school-card p{color:var(--gray-300);font-size:1.1rem;max-width:600px;margin:0 auto 2rem;line-height:1.7}
+.school-phone{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:1px;margin-bottom:0.5rem}
+.school-phone a{text-decoration:none;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.school-label{color:var(--gray-400);font-size:0.9rem;margin-bottom:1.5rem}
+.school-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;margin-top:2rem}
+.school-tag{padding:0.5rem 1rem;background:rgba(0,217,165,0.1);border:1px solid rgba(0,217,165,0.2);border-radius:30px;font-size:0.8rem;font-weight:600;color:var(--teal)}
+.partners-section{padding:6rem 2rem;text-align:center}
+.partner-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:2.5rem;max-width:500px;margin:3rem auto 0;transition:all 0.3s;text-decoration:none;display:block;color:var(--white)}
+.partner-card:hover{border-color:rgba(255,215,0,0.3);transform:translateY(-5px)}
+.partner-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
+.partner-card p{color:var(--gray-400);font-size:0.95rem;margin-bottom:1.5rem}
+.partner-cta{color:var(--gold);font-weight:600;font-size:0.9rem}
+.cta-section{padding:6rem 2rem;text-align:center}
+.cta-section h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:2px;margin-bottom:1.5rem}
+.cta-section p{font-size:1.2rem;color:var(--gray-300);max-width:600px;margin:0 auto 2rem}
+.footer{padding:3rem 2rem;border-top:1px solid var(--card-border);text-align:center}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
+.footer-links{display:flex;gap:2rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
+.footer-links a{color:var(--gray-400);text-decoration:none;font-size:0.9rem;transition:color 0.3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:0.8rem;color:var(--gray-500)}
+@media(max-width:768px){.nav{padding:1rem}.nav-links{display:none}.hero{padding:7rem 1.5rem 4rem}.hero-cta{flex-direction:column}.school-phone{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="bg-pattern"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">LA VOZ ESPORTS</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#games">Games</a></li>
+    <li><a href="#schools">Schools</a></li>
+    <li><a href="demo.html">Demo</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="langEN">EN</button>
+    <button class="lang-btn" id="langES">ES</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🎮 <span id="heroBadge">Cognitive Performance Training</span></div>
+  <h1><span class="gold" id="heroTitle1">TRAIN YOUR BRAIN.</span><br><span id="heroTitle2">COMPETE AT THE NEXT LEVEL.</span></h1>
+  <p class="hero-sub" id="heroSub">Esports cognitive training games designed to sharpen reaction time, pattern recognition, and mental agility. Powered by La Voz PR.</p>
+  <div class="hero-cta">
+    <a href="#games" class="btn-primary">🎮 <span id="ctaGames">Play the Games</span></a>
+    <a href="#schools" class="btn-secondary">🎓 <span id="ctaSchools">School Programs</span></a>
+  </div>
+</section>
+
+<section class="games-section" id="games">
+  <span class="section-label" id="gamesLabel">Cognitive Training</span>
+  <h2 class="section-title" id="gamesTitle">FIVE GAMES. ONE GOAL.</h2>
+  <p class="section-sub" style="margin:0 auto" id="gamesSub">Each game targets a different cognitive skill essential for esports performance.</p>
+  
+  <div class="games-grid">
+    <a href="the-react.html" class="game-card purple">
+      <div class="game-icon">⚡</div>
+      <h3>THE REACT</h3>
+      <p id="game1Desc">Lightning-fast reaction training. Hit targets the moment they appear.</p>
+      <span class="game-tag" id="game1Tag">Reaction Time</span>
+    </a>
+    
+    <a href="the-recall.html" class="game-card orange">
+      <div class="game-icon">🧠</div>
+      <h3>THE RECALL</h3>
+      <p id="game2Desc">Memory sequence challenges. Remember and repeat increasingly complex patterns.</p>
+      <span class="game-tag" id="game2Tag">Memory</span>
+    </a>
+    
+    <a href="the-reflex.html" class="game-card cyan">
+      <div class="game-icon">🎯</div>
+      <h3>THE REFLEX</h3>
+      <p id="game3Desc">Split-second decision making. React to the right stimulus, ignore the rest.</p>
+      <span class="game-tag" id="game3Tag">Decision Speed</span>
+    </a>
+    
+    <a href="the-replay.html" class="game-card teal">
+      <div class="game-icon">🔄</div>
+      <h3>THE REPLAY</h3>
+      <p id="game4Desc">Pattern recognition training. Spot and repeat visual sequences under pressure.</p>
+      <span class="game-tag" id="game4Tag">Pattern Recognition</span>
+    </a>
+    
+    <a href="the-ritmo.html" class="game-card lime">
+      <div class="game-icon">🥁</div>
+      <h3>THE RITMO</h3>
+      <p id="game5Desc">Rhythm and timing mastery. Sync your actions to the beat with precision.</p>
+      <span class="game-tag" id="game5Tag">Timing</span>
+    </a>
+  </div>
+</section>
+
+<section class="schools-section" id="schools">
+  <div class="schools-inner">
+    <span class="section-label" id="schoolsLabel">School Programs</span>
+    <h2 class="section-title" id="schoolsTitle">ESPORTS FOR YOUR SCHOOL</h2>
+    <p class="section-sub" style="margin:0 auto" id="schoolsSub">Bring competitive gaming and cognitive training to your students. Full curriculum integration, after-school leagues, and equipment support.</p>
+    
+    <div class="school-card">
+      <div class="school-icon">🎓</div>
+      <h3 id="schoolCardTitle">SCHOOL PROGRAMS HOTLINE</h3>
+      <p id="schoolCardDesc">Talk to us about bringing esports to your school. Curriculum integration, after-school leagues, equipment packages, and funding guidance.</p>
+      <div class="school-phone"><a href="tel:+17875582312">(787) 558-2312</a></div>
+      <div class="school-label" id="schoolCardLabel">Call for K-12, Charter, and Private School Programs</div>
+      <a href="tel:+17875582312" class="btn-primary">📞 <span id="schoolCta">Call Now</span></a>
+      
+      <div class="school-tags">
+        <span class="school-tag" id="tag1">Cognitive Training</span>
+        <span class="school-tag" id="tag2">Esports Leagues</span>
+        <span class="school-tag" id="tag3">STEM Integration</span>
+        <span class="school-tag" id="tag4">Focus & Discipline</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partners-section">
+  <span class="section-label" id="partnersLabel">Partners</span>
+  <h2 class="section-title" id="partnersTitle">BUILDING THE FUTURE OF ESPORTS</h2>
+  
+  <a href="https://www.puertoricoesportleague.com/proposals/paradiso/prel-paradiso-proposal.html" target="_blank" class="partner-card">
+    <div class="partner-logo">PUERTO RICO ESPORTS LEAGUE</div>
+    <p id="partnerDesc">Official partner for competitive esports programming and school league development across Puerto Rico.</p>
+    <span class="partner-cta" id="partnerCta">VIEW SCHOOL PROPOSAL →</span>
+  </a>
+</section>
+
+<section class="cta-section">
+  <h2 id="ctaTitle">READY TO LEVEL UP?</h2>
+  <p id="ctaSub">Experience La Voz PR's AI call center technology. Call our demo agent and see what's possible.</p>
+  <a href="demo.html" class="btn-primary">📞 <span id="ctaDemo">Try the Live Demo</span></a>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">LA VOZ ESPORTS</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="demo.html">Demo</a>
+    <a href="esports.html">Esports</a>
+    <a href="index.html#pricing">Pricing</a>
+  </div>
+  <div class="footer-copy">© 2025 GoStar Digital LLC, Puerto Rico</div>
+</footer>
+
+<script>
+(function(){
+var L='en',T={
+en:{heroBadge:'Cognitive Performance Training',heroTitle1:'TRAIN YOUR BRAIN.',heroTitle2:'COMPETE AT THE NEXT LEVEL.',heroSub:"Esports cognitive training games designed to sharpen reaction time, pattern recognition, and mental agility. Powered by La Voz PR.",ctaGames:'Play the Games',ctaSchools:'School Programs',gamesLabel:'Cognitive Training',gamesTitle:'FIVE GAMES. ONE GOAL.',gamesSub:'Each game targets a different cognitive skill essential for esports performance.',game1Desc:'Lightning-fast reaction training. Hit targets the moment they appear.',game1Tag:'Reaction Time',game2Desc:'Memory sequence challenges. Remember and repeat increasingly complex patterns.',game2Tag:'Memory',game3Desc:'Split-second decision making. React to the right stimulus, ignore the rest.',game3Tag:'Decision Speed',game4Desc:'Pattern recognition training. Spot and repeat visual sequences under pressure.',game4Tag:'Pattern Recognition',game5Desc:'Rhythm and timing mastery. Sync your actions to the beat with precision.',game5Tag:'Timing',schoolsLabel:'School Programs',schoolsTitle:'ESPORTS FOR YOUR SCHOOL',schoolsSub:'Bring competitive gaming and cognitive training to your students. Full curriculum integration, after-school leagues, and equipment support.',schoolCardTitle:'SCHOOL PROGRAMS HOTLINE',schoolCardDesc:'Talk to us about bringing esports to your school. Curriculum integration, after-school leagues, equipment packages, and funding guidance.',schoolCardLabel:'Call for K-12, Charter, and Private School Programs',schoolCta:'Call Now',tag1:'Cognitive Training',tag2:'Esports Leagues',tag3:'STEM Integration',tag4:'Focus & Discipline',partnersLabel:'Partners',partnersTitle:'BUILDING THE FUTURE OF ESPORTS',partnerDesc:'Official partner for competitive esports programming and school league development across Puerto Rico.',partnerCta:'VIEW SCHOOL PROPOSAL →',ctaTitle:'READY TO LEVEL UP?',ctaSub:"Experience La Voz PR's AI call center technology. Call our demo agent and see what's possible.",ctaDemo:'Try the Live Demo'},
+es:{heroBadge:'Entrenamiento Cognitivo',heroTitle1:'ENTRENA TU MENTE.',heroTitle2:'COMPITE AL SIGUIENTE NIVEL.',heroSub:'Juegos de entrenamiento cognitivo para esports diseñados para mejorar tiempo de reacción, reconocimiento de patrones y agilidad mental.',ctaGames:'Jugar',ctaSchools:'Programas Escolares',gamesLabel:'Entrenamiento Cognitivo',gamesTitle:'CINCO JUEGOS. UN OBJETIVO.',gamesSub:'Cada juego entrena una habilidad cognitiva esencial para el rendimiento en esports.',game1Desc:'Entrenamiento de reacción ultrarrápida. Golpea los objetivos al instante.',game1Tag:'Tiempo de Reacción',game2Desc:'Desafíos de secuencias de memoria. Recuerda y repite patrones cada vez más complejos.',game2Tag:'Memoria',game3Desc:'Decisiones en fracciones de segundo. Reacciona al estímulo correcto, ignora el resto.',game3Tag:'Velocidad de Decisión',game4Desc:'Entrenamiento de reconocimiento de patrones bajo presión.',game4Tag:'Reconocimiento',game5Desc:'Dominio del ritmo y el timing. Sincroniza tus acciones al compás.',game5Tag:'Timing',schoolsLabel:'Programas Escolares',schoolsTitle:'ESPORTS PARA TU ESCUELA',schoolsSub:'Lleva gaming competitivo y entrenamiento cognitivo a tus estudiantes. Integración curricular, ligas after-school y equipamiento.',schoolCardTitle:'LÍNEA DE PROGRAMAS ESCOLARES',schoolCardDesc:'Habla con nosotros sobre traer esports a tu escuela. Integración curricular, ligas, equipamiento y guía de financiamiento.',schoolCardLabel:'Llama para programas K-12, Charter y Escuelas Privadas',schoolCta:'Llamar Ahora',tag1:'Entrenamiento Cognitivo',tag2:'Ligas Esports',tag3:'Integración STEM',tag4:'Enfoque y Disciplina',partnersLabel:'Socios',partnersTitle:'CONSTRUYENDO EL FUTURO DEL ESPORTS',partnerDesc:'Socio oficial para programación competitiva de esports y desarrollo de ligas escolares en Puerto Rico.',partnerCta:'VER PROPUESTA ESCOLAR →',ctaTitle:'¿LISTO PARA SUBIR DE NIVEL?',ctaSub:'Experimenta la tecnología de call center AI de La Voz PR. Llama a nuestro agente demo.',ctaDemo:'Probar el Demo'}
+};
+function u(){Object.keys(T.en).forEach(function(k){var e=document.getElementById(k);if(e)e.textContent=T[L][k]||T.en[k]});document.getElementById('langEN').classList.toggle('active',L==='en');document.getElementById('langES').classList.toggle('active',L==='es')}
+document.getElementById('langEN').onclick=function(){L='en';localStorage.setItem('lavozpr-lang','en');u()};
+document.getElementById('langES').onclick=function(){L='es';localStorage.setItem('lavozpr-lang','es');u()};
+var s=localStorage.getItem('lavozpr-lang');if(s)L=s;u();
+})();
+</script>
+</body>
+</html>
