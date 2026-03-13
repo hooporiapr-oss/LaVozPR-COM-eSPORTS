@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VozLine Demo | Experience AI Call Center Technology</title>
-<meta name="description" content="Call our AI demo agent and experience VozLine in action. See how AI handles calls for businesses, events, and athletic programs. Bilingual. 24/7. Puerto Rico.">
+<title>VozLine Demo | Live Sports Data + AI Call Center</title>
+<meta name="description" content="Call our AI demo agent — ask about live scores, game schedules, standings, player stats. Experience real-time data + voice AI for businesses, events, and athletics.">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
@@ -28,6 +28,7 @@
   --card-border: rgba(255,255,255,0.08);
   --glow-purple: rgba(107,70,193,0.4);
   --glow-gold: rgba(255,215,0,0.3);
+  --glow-teal: rgba(0,217,165,0.3);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,12 +49,11 @@ body {
   background: 
     radial-gradient(ellipse at 30% 20%, rgba(107,70,193,0.2) 0%, transparent 50%),
     radial-gradient(ellipse at 70% 80%, rgba(255,215,0,0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(6,182,212,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(0,217,165,0.08) 0%, transparent 60%),
     var(--cosmic-dark);
   z-index: -1;
 }
 
-/* Nav */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -117,7 +117,6 @@ body {
   color: var(--white);
 }
 
-/* Hero */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -133,12 +132,12 @@ body {
   align-items: center;
   gap: 0.75rem;
   padding: 0.6rem 1.5rem;
-  background: rgba(255,215,0,0.1);
-  border: 1px solid rgba(255,215,0,0.3);
+  background: rgba(0,217,165,0.1);
+  border: 1px solid rgba(0,217,165,0.3);
   border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--teal);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 2rem;
@@ -146,8 +145,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.2); }
-  50% { box-shadow: 0 0 40px rgba(255,215,0,0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0,217,165,0.2); }
+  50% { box-shadow: 0 0 40px rgba(0,217,165,0.4); }
 }
 
 .demo-badge .live-dot {
@@ -164,14 +163,21 @@ body {
 
 .hero h1 {
   font-family: 'Fraunces', serif;
-  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-size: clamp(2.2rem, 6vw, 4rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.1;
   margin-bottom: 1.5rem;
-  max-width: 800px;
+  max-width: 850px;
 }
 
 .hero h1 .gradient {
+  background: linear-gradient(135deg, var(--teal), var(--cosmic-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero h1 .gold {
   background: linear-gradient(135deg, var(--gold), var(--orange));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -179,21 +185,55 @@ body {
 }
 
 .hero-sub {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
   color: var(--gray-300);
-  max-width: 650px;
-  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-bottom: 2.5rem;
   line-height: 1.7;
 }
 
-/* Phone CTA */
+.live-ticker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: var(--gray-100);
+  transition: all 0.3s;
+}
+
+.ticker-item:hover {
+  border-color: var(--teal);
+  background: rgba(0,217,165,0.08);
+}
+
+.ticker-item .emoji { font-size: 1rem; }
+.ticker-item .live-indicator {
+  width: 6px; height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
 .phone-cta {
   background: var(--card-bg);
-  border: 2px solid rgba(255,215,0,0.2);
+  border: 2px solid rgba(255,215,0,0.25);
   border-radius: 24px;
   padding: 3rem;
   text-align: center;
-  max-width: 500px;
+  max-width: 520px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -205,11 +245,11 @@ body {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--gold), var(--orange));
+  background: linear-gradient(90deg, var(--teal), var(--gold), var(--orange));
 }
 
 .phone-cta:hover {
-  border-color: rgba(255,215,0,0.4);
+  border-color: rgba(255,215,0,0.5);
   transform: translateY(-5px);
   box-shadow: 0 20px 60px rgba(255,215,0,0.15);
 }
@@ -261,9 +301,7 @@ body {
   transition: all 0.3s;
 }
 
-.phone-number-large a:hover {
-  filter: brightness(1.2);
-}
+.phone-number-large a:hover { filter: brightness(1.2); }
 
 .phone-sub {
   color: var(--gray-400);
@@ -296,22 +334,26 @@ body {
   box-shadow: 0 8px 40px rgba(255,215,0,0.5);
 }
 
-/* What You'll Experience */
-.experience {
+.live-data-section {
   padding: 5rem 2rem;
+  background: linear-gradient(180deg, transparent, rgba(0,217,165,0.03), transparent);
+}
+
+.live-data-inner {
   max-width: 1000px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .section-label {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: rgba(6,182,212,0.1);
-  border: 1px solid rgba(6,182,212,0.3);
+  background: rgba(0,217,165,0.1);
+  border: 1px solid rgba(0,217,165,0.3);
   border-radius: 50px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--cosmic-cyan);
+  color: var(--teal);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 1.5rem;
@@ -322,15 +364,94 @@ body {
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  text-align: center;
 }
 
 .section-sub {
   font-size: 1.1rem;
   color: var(--gray-400);
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto 3rem;
-  text-align: center;
+}
+
+.ask-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.ask-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: left;
+  transition: all 0.3s;
+}
+
+.ask-card:hover {
+  border-color: rgba(0,217,165,0.3);
+  transform: translateY(-3px);
+}
+
+.ask-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ask-card-icon { font-size: 1.5rem; }
+
+.ask-card-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ask-card-question {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--white);
+}
+
+.ask-card-answer {
+  font-size: 0.9rem;
+  color: var(--gray-400);
+  line-height: 1.6;
+  padding-left: 1rem;
+  border-left: 2px solid var(--teal);
+}
+
+.leagues-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.league-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: rgba(107,70,193,0.1);
+  border: 1px solid rgba(107,70,193,0.2);
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cosmic-violet);
+}
+
+.experience {
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .demo-modes {
@@ -366,10 +487,7 @@ body {
 
 .demo-card:hover::before { opacity: 1; }
 
-.demo-card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
+.demo-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
 
 .demo-card h3 {
   font-family: 'Fraunces', serif;
@@ -400,7 +518,6 @@ body {
   color: var(--cosmic-violet);
 }
 
-/* How It Works */
 .how-demo {
   padding: 5rem 2rem;
   background: linear-gradient(180deg, transparent, rgba(107,70,193,0.05), transparent);
@@ -453,7 +570,6 @@ body {
   line-height: 1.6;
 }
 
-/* Final CTA */
 .final-cta {
   padding: 6rem 2rem;
   text-align: center;
@@ -469,8 +585,37 @@ body {
 .final-cta p {
   font-size: 1.2rem;
   color: var(--gray-300);
-  max-width: 550px;
+  max-width: 600px;
   margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  border: none;
+  border-radius: 50px;
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255,215,0,0.4);
 }
 
 .btn-secondary {
@@ -495,7 +640,6 @@ body {
   box-shadow: 0 4px 20px rgba(6,182,212,0.3);
 }
 
-/* Footer */
 .footer {
   padding: 2rem;
   border-top: 1px solid var(--card-border);
@@ -518,7 +662,6 @@ body {
   color: var(--gray-500);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .nav { padding: 1rem; }
   .hero { padding: 7rem 1.5rem 4rem; }
@@ -526,6 +669,8 @@ body {
   .phone-icon-large { width: 80px; height: 80px; font-size: 2rem; }
   .steps-row { flex-direction: column; align-items: center; }
   .step-item { max-width: 100%; }
+  .live-ticker { gap: 0.5rem; }
+  .ticker-item { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
 }
 </style>
 </head>
@@ -542,44 +687,109 @@ body {
   </div>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
   <div class="demo-badge">
     <span class="live-dot"></span>
-    <span id="demoBadge">Live Demo — Call Now</span>
+    <span id="demoBadge">Live Data · Real-Time AI</span>
   </div>
   
-  <h1 id="heroTitle">Experience <span class="gradient">VozLine</span> in Action</h1>
+  <h1>"<span class="gradient" id="heroQuestion">What's the Score?</span>"<br><span class="gold" id="heroAnswer">I'll Tell You.</span></h1>
   
-  <p class="hero-sub" id="heroSub">Don't take our word for it — call our AI demo agent right now. Ask anything. Test it. See exactly what your customers, attendees, or students would experience.</p>
+  <p class="hero-sub" id="heroSub">Call our AI demo agent and ask about live sports scores, game schedules, standings, player stats — any league, any team. This is what real-time AI sounds like.</p>
+  
+  <div class="live-ticker">
+    <div class="ticker-item"><span class="emoji">🏀</span> <span class="live-indicator"></span> <span id="tick1">NBA Scores</span></div>
+    <div class="ticker-item"><span class="emoji">⚾</span> <span class="live-indicator"></span> <span id="tick2">MLB Results</span></div>
+    <div class="ticker-item"><span class="emoji">⚽</span> <span class="live-indicator"></span> <span id="tick3">Soccer Standings</span></div>
+    <div class="ticker-item"><span class="emoji">🏈</span> <span class="live-indicator"></span> <span id="tick4">NFL Stats</span></div>
+    <div class="ticker-item"><span class="emoji">🎮</span> <span class="live-indicator"></span> <span id="tick5">Esports</span></div>
+  </div>
   
   <div class="phone-cta">
     <div class="phone-icon-large">📞</div>
-    <div class="phone-label" id="phoneLabel">VozLine Demo Hotline</div>
+    <div class="phone-label" id="phoneLabel">VozLine Demo · Live Data</div>
     <div class="phone-number-large">
       <a href="tel:+17875581988">(787) 558-1988</a>
     </div>
-    <p class="phone-sub" id="phoneSub">Bilingual AI · English & Spanish · Available 24/7</p>
+    <p class="phone-sub" id="phoneSub">Ask about any game, any team, any league — in English or Spanish</p>
     <a href="tel:+17875581988" class="btn-call-large">
       <span>📞</span>
-      <span id="callBtn">Call Now — It's Free</span>
+      <span id="callBtn">Call Now — Test It Live</span>
     </a>
   </div>
 </section>
 
-<!-- What You'll Experience -->
+<section class="live-data-section">
+  <div class="live-data-inner">
+    <span class="section-label" id="liveLabel">Real-Time Data</span>
+    <h2 class="section-title" id="liveTitle">Ask Anything. Get Real Answers.</h2>
+    <p class="section-sub" id="liveSub">Our AI doesn't guess — it pulls live data. Scores, schedules, standings, player stats. All delivered naturally over the phone.</p>
+    
+    <div class="ask-grid">
+      <div class="ask-card">
+        <div class="ask-card-header">
+          <span class="ask-card-icon">🏀</span>
+          <span class="ask-card-category" id="ask1Cat">Live Scores</span>
+        </div>
+        <div class="ask-card-question" id="ask1Q">"What's the Lakers score?"</div>
+        <div class="ask-card-answer" id="ask1A">"Lakers won 118-109 against Sacramento. LeBron had 28 points, 12 assists. Their next game is Thursday vs Denver."</div>
+      </div>
+      
+      <div class="ask-card">
+        <div class="ask-card-header">
+          <span class="ask-card-icon">📊</span>
+          <span class="ask-card-category" id="ask2Cat">Standings</span>
+        </div>
+        <div class="ask-card-question" id="ask2Q">"Who's leading the East?"</div>
+        <div class="ask-card-answer" id="ask2A">"Boston is first with 45-12. Cleveland is second at 43-15, and New York is third with 38-20."</div>
+      </div>
+      
+      <div class="ask-card">
+        <div class="ask-card-header">
+          <span class="ask-card-icon">📅</span>
+          <span class="ask-card-category" id="ask3Cat">Schedules</span>
+        </div>
+        <div class="ask-card-question" id="ask3Q">"When's the next Yankees game?"</div>
+        <div class="ask-card-answer" id="ask3A">"Yankees play tomorrow at 7:05 PM against the Red Sox at Yankee Stadium. Second game of a three-game series."</div>
+      </div>
+      
+      <div class="ask-card">
+        <div class="ask-card-header">
+          <span class="ask-card-icon">⭐</span>
+          <span class="ask-card-category" id="ask4Cat">Player Stats</span>
+        </div>
+        <div class="ask-card-question" id="ask4Q">"How did Tatum play last night?"</div>
+        <div class="ask-card-answer" id="ask4A">"Jayson Tatum had 38 points, 9 rebounds, and 6 assists. Shot 14-for-23 from the field, including 5 threes."</div>
+      </div>
+    </div>
+    
+    <div class="leagues-row">
+      <span class="league-badge">🏀 NBA</span>
+      <span class="league-badge">⚾ MLB</span>
+      <span class="league-badge">🏈 NFL</span>
+      <span class="league-badge">🏒 NHL</span>
+      <span class="league-badge">⚽ MLS</span>
+      <span class="league-badge">⚽ EPL</span>
+      <span class="league-badge">⚽ La Liga</span>
+      <span class="league-badge">🎾 Tennis</span>
+      <span class="league-badge">🎮 Esports</span>
+      <span class="league-badge">🏀 NCAA</span>
+    </div>
+  </div>
+</section>
+
 <section class="experience">
   <div style="text-align: center;">
-    <span class="section-label" id="expLabel">What You'll Experience</span>
-    <h2 class="section-title" id="expTitle">Three Demo Modes. One Call.</h2>
-    <p class="section-sub" id="expSub">Tell Voz what you want to see. Our AI will roleplay as your agent and show you exactly how it handles real calls.</p>
+    <span class="section-label" id="expLabel">Beyond Sports</span>
+    <h2 class="section-title" id="expTitle">Three Industries. One Platform.</h2>
+    <p class="section-sub" id="expSub">Live data works for any industry. Sports is just the demo. Tell Voz what you need.</p>
   </div>
   
   <div class="demo-modes">
     <div class="demo-card">
       <div class="demo-card-icon">🏢</div>
       <h3 id="mode1Title">Business Call Center</h3>
-      <p id="mode1Desc">See how VozLine handles customer calls for restaurants, clinics, law firms, real estate, and home services. Reservations, appointments, FAQs — all handled instantly.</p>
+      <p id="mode1Desc">Reservations, appointments, availability — all pulled from your systems in real-time. No hold, no voicemail.</p>
       <div class="demo-examples">
         <span class="demo-tag" id="tag1a">Restaurants</span>
         <span class="demo-tag" id="tag1b">Clinics</span>
@@ -591,66 +801,68 @@ body {
     <div class="demo-card">
       <div class="demo-card-icon">🎪</div>
       <h3 id="mode2Title">Event Call Center</h3>
-      <p id="mode2Desc">Experience how VozLine supports events like GAMERGY, conferences, and festivals. Tickets, schedules, parking, VIP access — no hold times, no missed calls.</p>
+      <p id="mode2Desc">Ticket availability, schedules, parking, VIP access — live event data delivered instantly to every caller.</p>
       <div class="demo-examples">
         <span class="demo-tag" id="tag2a">GAMERGY</span>
         <span class="demo-tag" id="tag2b">Conferences</span>
         <span class="demo-tag" id="tag2c">Festivals</span>
-        <span class="demo-tag" id="tag2d">Expos</span>
+        <span class="demo-tag" id="tag2d">Concerts</span>
       </div>
     </div>
     
     <div class="demo-card">
-      <div class="demo-card-icon">🎮</div>
-      <h3 id="mode3Title">Athletic & Esports Programs</h3>
-      <p id="mode3Desc">Hear how VozLine handles parent calls for school esports, after-school leagues, and athletic programs. Schedules, fees, registration — answered 24/7.</p>
+      <div class="demo-card-icon">🏆</div>
+      <h3 id="mode3Title">Sports & Athletics</h3>
+      <p id="mode3Desc">Game schedules, scores, standings, player stats, registration — parents and fans get instant answers 24/7.</p>
       <div class="demo-examples">
-        <span class="demo-tag" id="tag3a">School Esports</span>
-        <span class="demo-tag" id="tag3b">After-School</span>
+        <span class="demo-tag" id="tag3a">Leagues</span>
+        <span class="demo-tag" id="tag3b">School Sports</span>
         <span class="demo-tag" id="tag3c">Travel Teams</span>
-        <span class="demo-tag" id="tag3d">Camps</span>
+        <span class="demo-tag" id="tag3d">Esports</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- How the Demo Works -->
 <section class="how-demo">
   <div class="how-demo-inner">
     <span class="section-label" id="howLabel">How It Works</span>
-    <h2 class="section-title" id="howTitle">Your Demo. Your Rules.</h2>
-    <p class="section-sub" id="howSub">Call, pick a scenario, and watch Voz become your AI agent.</p>
+    <h2 class="section-title" id="howTitle">Call. Ask. Get Real Data.</h2>
+    <p class="section-sub" id="howSub">No menus. No hold. No scripts. Just intelligent conversation powered by live information.</p>
     
     <div class="steps-row">
       <div class="step-item">
         <div class="step-num">1</div>
-        <h4 id="step1Title">Call the Number</h4>
-        <p id="step1Desc">Dial (787) 558-1988. Voz picks up instantly — no hold, no menu.</p>
+        <h4 id="step1Title">Call</h4>
+        <p id="step1Desc">Dial (787) 558-1988. Voz answers instantly.</p>
       </div>
       <div class="step-item">
         <div class="step-num">2</div>
-        <h4 id="step2Title">Pick a Scenario</h4>
-        <p id="step2Desc">Tell Voz what to demo — a restaurant, an event, a school program. Anything.</p>
+        <h4 id="step2Title">Ask</h4>
+        <p id="step2Desc">Any sports question — scores, schedules, standings, stats.</p>
       </div>
       <div class="step-item">
         <div class="step-num">3</div>
-        <h4 id="step3Title">Test It</h4>
-        <p id="step3Desc">Ask questions like a real customer. See how natural and helpful AI can be.</p>
+        <h4 id="step3Title">Get Answers</h4>
+        <p id="step3Desc">Real data, delivered naturally. That's VozLine.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Final CTA -->
 <section class="final-cta">
-  <h2 id="finalTitle">Ready to Get Your Own VozLine Agent?</h2>
-  <p id="finalSub">After the demo, let's talk. Your custom AI agent can be live in 48 hours.</p>
-  <a href="vozline.html" class="btn-secondary">
-    <span id="finalBtn">View VozLine Plans</span> →
-  </a>
+  <h2 id="finalTitle">This Is What Your Callers Could Experience</h2>
+  <p id="finalSub">Live data. Natural conversation. 24/7. Bilingual. Your AI call center can be live in 48 hours.</p>
+  <div class="cta-buttons">
+    <a href="tel:+17875581988" class="btn-primary">
+      📞 <span id="finalCall">Call the Demo</span>
+    </a>
+    <a href="vozline.html" class="btn-secondary">
+      <span id="finalBtn">View Plans</span> →
+    </a>
+  </div>
 </section>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="footer-logo">VozLine</div>
   <div class="footer-copy">GoStar Digital LLC • Puerto Rico • <a href="tel:+17875581988" style="color: var(--gold); text-decoration: none;">(787) 558-1988</a></div>
@@ -663,69 +875,83 @@ body {
   var translations = {
     en: {
       navBack: 'Back to VozLine',
-      demoBadge: 'Live Demo — Call Now',
-      heroTitle: 'Experience <span class="gradient">VozLine</span> in Action',
-      heroSub: 'Don\'t take our word for it — call our AI demo agent right now. Ask anything. Test it. See exactly what your customers, attendees, or students would experience.',
-      phoneLabel: 'VozLine Demo Hotline',
-      phoneSub: 'Bilingual AI · English & Spanish · Available 24/7',
-      callBtn: 'Call Now — It\'s Free',
-      expLabel: 'What You\'ll Experience',
-      expTitle: 'Three Demo Modes. One Call.',
-      expSub: 'Tell Voz what you want to see. Our AI will roleplay as your agent and show you exactly how it handles real calls.',
+      demoBadge: 'Live Data · Real-Time AI',
+      heroQuestion: "What's the Score?",
+      heroAnswer: "I'll Tell You.",
+      heroSub: "Call our AI demo agent and ask about live sports scores, game schedules, standings, player stats — any league, any team. This is what real-time AI sounds like.",
+      tick1: 'NBA Scores', tick2: 'MLB Results', tick3: 'Soccer Standings', tick4: 'NFL Stats', tick5: 'Esports',
+      phoneLabel: 'VozLine Demo · Live Data',
+      phoneSub: 'Ask about any game, any team, any league — in English or Spanish',
+      callBtn: 'Call Now — Test It Live',
+      liveLabel: 'Real-Time Data',
+      liveTitle: 'Ask Anything. Get Real Answers.',
+      liveSub: "Our AI doesn't guess — it pulls live data. Scores, schedules, standings, player stats. All delivered naturally over the phone.",
+      ask1Cat: 'Live Scores', ask1Q: '"What\'s the Lakers score?"', ask1A: '"Lakers won 118-109 against Sacramento. LeBron had 28 points, 12 assists. Their next game is Thursday vs Denver."',
+      ask2Cat: 'Standings', ask2Q: '"Who\'s leading the East?"', ask2A: '"Boston is first with 45-12. Cleveland is second at 43-15, and New York is third with 38-20."',
+      ask3Cat: 'Schedules', ask3Q: '"When\'s the next Yankees game?"', ask3A: '"Yankees play tomorrow at 7:05 PM against the Red Sox at Yankee Stadium. Second game of a three-game series."',
+      ask4Cat: 'Player Stats', ask4Q: '"How did Tatum play last night?"', ask4A: '"Jayson Tatum had 38 points, 9 rebounds, and 6 assists. Shot 14-for-23 from the field, including 5 threes."',
+      expLabel: 'Beyond Sports',
+      expTitle: 'Three Industries. One Platform.',
+      expSub: 'Live data works for any industry. Sports is just the demo. Tell Voz what you need.',
       mode1Title: 'Business Call Center',
-      mode1Desc: 'See how VozLine handles customer calls for restaurants, clinics, law firms, real estate, and home services. Reservations, appointments, FAQs — all handled instantly.',
+      mode1Desc: 'Reservations, appointments, availability — all pulled from your systems in real-time. No hold, no voicemail.',
       tag1a: 'Restaurants', tag1b: 'Clinics', tag1c: 'Law Firms', tag1d: 'Real Estate',
       mode2Title: 'Event Call Center',
-      mode2Desc: 'Experience how VozLine supports events like GAMERGY, conferences, and festivals. Tickets, schedules, parking, VIP access — no hold times, no missed calls.',
-      tag2a: 'GAMERGY', tag2b: 'Conferences', tag2c: 'Festivals', tag2d: 'Expos',
-      mode3Title: 'Athletic & Esports Programs',
-      mode3Desc: 'Hear how VozLine handles parent calls for school esports, after-school leagues, and athletic programs. Schedules, fees, registration — answered 24/7.',
-      tag3a: 'School Esports', tag3b: 'After-School', tag3c: 'Travel Teams', tag3d: 'Camps',
+      mode2Desc: 'Ticket availability, schedules, parking, VIP access — live event data delivered instantly to every caller.',
+      tag2a: 'GAMERGY', tag2b: 'Conferences', tag2c: 'Festivals', tag2d: 'Concerts',
+      mode3Title: 'Sports & Athletics',
+      mode3Desc: 'Game schedules, scores, standings, player stats, registration — parents and fans get instant answers 24/7.',
+      tag3a: 'Leagues', tag3b: 'School Sports', tag3c: 'Travel Teams', tag3d: 'Esports',
       howLabel: 'How It Works',
-      howTitle: 'Your Demo. Your Rules.',
-      howSub: 'Call, pick a scenario, and watch Voz become your AI agent.',
-      step1Title: 'Call the Number',
-      step1Desc: 'Dial (787) 558-1988. Voz picks up instantly — no hold, no menu.',
-      step2Title: 'Pick a Scenario',
-      step2Desc: 'Tell Voz what to demo — a restaurant, an event, a school program. Anything.',
-      step3Title: 'Test It',
-      step3Desc: 'Ask questions like a real customer. See how natural and helpful AI can be.',
-      finalTitle: 'Ready to Get Your Own VozLine Agent?',
-      finalSub: 'After the demo, let\'s talk. Your custom AI agent can be live in 48 hours.',
-      finalBtn: 'View VozLine Plans'
+      howTitle: 'Call. Ask. Get Real Data.',
+      howSub: 'No menus. No hold. No scripts. Just intelligent conversation powered by live information.',
+      step1Title: 'Call', step1Desc: 'Dial (787) 558-1988. Voz answers instantly.',
+      step2Title: 'Ask', step2Desc: 'Any sports question — scores, schedules, standings, stats.',
+      step3Title: 'Get Answers', step3Desc: "Real data, delivered naturally. That's VozLine.",
+      finalTitle: 'This Is What Your Callers Could Experience',
+      finalSub: 'Live data. Natural conversation. 24/7. Bilingual. Your AI call center can be live in 48 hours.',
+      finalCall: 'Call the Demo',
+      finalBtn: 'View Plans'
     },
     es: {
       navBack: 'Volver a VozLine',
-      demoBadge: 'Demo en Vivo — Llama Ahora',
-      heroTitle: 'Experimenta <span class="gradient">VozLine</span> en Acción',
-      heroSub: 'No nos creas a nosotros — llama a nuestro agente de demostración AI ahora mismo. Pregunta lo que quieras. Pruébalo. Ve exactamente lo que tus clientes, asistentes o estudiantes experimentarían.',
-      phoneLabel: 'Línea de Demostración VozLine',
-      phoneSub: 'IA Bilingüe · Inglés y Español · Disponible 24/7',
-      callBtn: 'Llamar Ahora — Es Gratis',
-      expLabel: 'Lo Que Experimentarás',
-      expTitle: 'Tres Modos de Demo. Una Llamada.',
-      expSub: 'Dile a Voz lo que quieres ver. Nuestra IA actuará como tu agente y te mostrará exactamente cómo maneja llamadas reales.',
+      demoBadge: 'Datos en Vivo · IA en Tiempo Real',
+      heroQuestion: "¿Cuál es el Marcador?",
+      heroAnswer: "Te lo Digo.",
+      heroSub: "Llama a nuestro agente AI y pregunta sobre marcadores en vivo, calendarios, posiciones, estadísticas — cualquier liga, cualquier equipo. Así suena la IA en tiempo real.",
+      tick1: 'NBA en Vivo', tick2: 'Resultados MLB', tick3: 'Posiciones Fútbol', tick4: 'Stats NFL', tick5: 'Esports',
+      phoneLabel: 'Demo VozLine · Datos en Vivo',
+      phoneSub: 'Pregunta sobre cualquier juego, equipo o liga — en inglés o español',
+      callBtn: 'Llamar Ahora — Pruébalo en Vivo',
+      liveLabel: 'Datos en Tiempo Real',
+      liveTitle: 'Pregunta lo que Sea. Obtén Respuestas Reales.',
+      liveSub: "Nuestra IA no adivina — obtiene datos en vivo. Marcadores, calendarios, posiciones, estadísticas. Todo entregado naturalmente por teléfono.",
+      ask1Cat: 'Marcadores en Vivo', ask1Q: '"¿Cuál es el marcador de los Lakers?"', ask1A: '"Lakers ganaron 118-109 contra Sacramento. LeBron tuvo 28 puntos y 12 asistencias. Próximo juego el jueves vs Denver."',
+      ask2Cat: 'Posiciones', ask2Q: '"¿Quién lidera el Este?"', ask2A: '"Boston primero con 45-12. Cleveland segundo 43-15, New York tercero 38-20."',
+      ask3Cat: 'Calendarios', ask3Q: '"¿Cuándo juegan los Yankees?"', ask3A: '"Yankees juegan mañana 7:05 PM contra Red Sox en Yankee Stadium. Segundo juego de serie de tres."',
+      ask4Cat: 'Stats de Jugadores', ask4Q: '"¿Cómo jugó Tatum anoche?"', ask4A: '"Jayson Tatum: 38 puntos, 9 rebotes, 6 asistencias. 14-de-23 del campo, 5 triples."',
+      expLabel: 'Más Allá del Deporte',
+      expTitle: 'Tres Industrias. Una Plataforma.',
+      expSub: 'Los datos en vivo funcionan para cualquier industria. El deporte es solo la demo.',
       mode1Title: 'Call Center de Negocios',
-      mode1Desc: 'Ve cómo VozLine maneja llamadas de clientes para restaurantes, clínicas, bufetes, bienes raíces y servicios del hogar. Reservaciones, citas, preguntas — todo al instante.',
+      mode1Desc: 'Reservaciones, citas, disponibilidad — todo desde tus sistemas en tiempo real. Sin espera, sin buzón.',
       tag1a: 'Restaurantes', tag1b: 'Clínicas', tag1c: 'Bufetes', tag1d: 'Bienes Raíces',
       mode2Title: 'Call Center de Eventos',
-      mode2Desc: 'Experimenta cómo VozLine apoya eventos como GAMERGY, conferencias y festivales. Boletos, horarios, estacionamiento, acceso VIP — sin esperas, sin llamadas perdidas.',
-      tag2a: 'GAMERGY', tag2b: 'Conferencias', tag2c: 'Festivales', tag2d: 'Expos',
-      mode3Title: 'Programas Atléticos y Esports',
-      mode3Desc: 'Escucha cómo VozLine maneja llamadas de padres para esports escolar, ligas extracurriculares y programas atléticos. Horarios, costos, inscripción — respondido 24/7.',
-      tag3a: 'Esports Escolar', tag3b: 'Extracurricular', tag3c: 'Travel Teams', tag3d: 'Campamentos',
+      mode2Desc: 'Boletos, horarios, estacionamiento, VIP — datos de eventos en vivo al instante para cada llamada.',
+      tag2a: 'GAMERGY', tag2b: 'Conferencias', tag2c: 'Festivales', tag2d: 'Conciertos',
+      mode3Title: 'Deportes y Atletismo',
+      mode3Desc: 'Calendarios, marcadores, posiciones, stats, inscripciones — padres y fans con respuestas al instante 24/7.',
+      tag3a: 'Ligas', tag3b: 'Deportes Escolares', tag3c: 'Travel Teams', tag3d: 'Esports',
       howLabel: 'Cómo Funciona',
-      howTitle: 'Tu Demo. Tus Reglas.',
-      howSub: 'Llama, escoge un escenario, y mira a Voz convertirse en tu agente AI.',
-      step1Title: 'Llama al Número',
-      step1Desc: 'Marca (787) 558-1988. Voz contesta al instante — sin espera, sin menú.',
-      step2Title: 'Escoge un Escenario',
-      step2Desc: 'Dile a Voz qué demostrar — un restaurante, un evento, un programa escolar. Lo que sea.',
-      step3Title: 'Pruébalo',
-      step3Desc: 'Haz preguntas como un cliente real. Ve cuán natural y útil puede ser la IA.',
-      finalTitle: '¿Listo para Tu Propio Agente VozLine?',
-      finalSub: 'Después del demo, hablamos. Tu agente AI personalizado puede estar activo en 48 horas.',
-      finalBtn: 'Ver Planes VozLine'
+      howTitle: 'Llama. Pregunta. Obtén Datos Reales.',
+      howSub: 'Sin menús. Sin espera. Sin scripts. Conversación inteligente con información en vivo.',
+      step1Title: 'Llama', step1Desc: 'Marca (787) 558-1988. Voz contesta al instante.',
+      step2Title: 'Pregunta', step2Desc: 'Cualquier pregunta — marcadores, calendarios, posiciones, stats.',
+      step3Title: 'Obtén Respuestas', step3Desc: 'Datos reales, entregados naturalmente. Eso es VozLine.',
+      finalTitle: 'Esto Es lo que Tus Clientes Experimentarían',
+      finalSub: 'Datos en vivo. Conversación natural. 24/7. Bilingüe. Tu call center AI activo en 48 horas.',
+      finalCall: 'Llamar al Demo',
+      finalBtn: 'Ver Planes'
     }
   };
   
@@ -734,18 +960,10 @@ body {
   }
   
   function updateUI() {
-    var keys = Object.keys(translations.en);
-    keys.forEach(function(key) {
+    Object.keys(translations.en).forEach(function(key) {
       var el = document.getElementById(key);
-      if (el) {
-        if (key === 'heroTitle') {
-          el.innerHTML = t(key);
-        } else {
-          el.textContent = t(key);
-        }
-      }
+      if (el) el.textContent = t(key);
     });
-    
     document.getElementById('langEN').classList.toggle('active', currentLang === 'en');
     document.getElementById('langES').classList.toggle('active', currentLang === 'es');
     document.documentElement.lang = currentLang;
