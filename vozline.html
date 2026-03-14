@@ -475,6 +475,106 @@
             margin-top: 0.75rem;
         }
 
+        /* Demo Grid */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .demo-card {
+            background: var(--white);
+            border: 3px solid var(--black);
+            box-shadow: 5px 5px 0 var(--black);
+            overflow: hidden;
+        }
+
+        .demo-card-header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .demo-card-header.tourism {
+            background: var(--green);
+            color: var(--white);
+        }
+
+        .demo-card-header.realestate {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .demo-card-header.hospitality {
+            background: #6A1B9A;
+            color: var(--white);
+        }
+
+        .demo-icon {
+            font-size: 1.5rem;
+        }
+
+        .demo-card-header h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-card-body {
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .demo-card-body p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            min-height: 2.5rem;
+        }
+
+        .demo-number {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            background: var(--yellow);
+            border: 2px solid var(--black);
+            transition: all 0.2s;
+        }
+
+        .demo-number:hover {
+            background: var(--black);
+            color: var(--yellow);
+        }
+
+        .demo-tag {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 800px) {
+            .demo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* How It Works */
         .how-section {
             background: var(--yellow-pale);
@@ -825,14 +925,92 @@
 
     <!-- Demo -->
     <section class="demo-section" id="demo">
-        <div class="demo-box">
-            <h2 data-en="Hear It Live" data-es="Escúchalo en Vivo">Hear It Live</h2>
-            <p data-en="Call our demo line and talk to Bori — our AI tourism guide. Ask about restaurants, hotels, beaches — anything about Puerto Rico." data-es="Llama a nuestra línea demo y habla con Bori — nuestro guía de turismo de IA. Pregunta sobre restaurantes, hoteles, playas — lo que sea sobre Puerto Rico.">
-                Call our demo line and talk to Bori — our AI tourism guide. Ask about restaurants, hotels, beaches — anything about Puerto Rico.
-            </p>
-            <a href="tel:+17874686336" class="demo-phone">(787) 468-6336</a>
-            <p class="demo-label" data-en="Bori Guides • 24/7 • Bilingual" data-es="Bori Guides • 24/7 • Bilingüe">Bori Guides • 24/7 • Bilingual</p>
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h2 data-en="─── Hear It Live ───" data-es="─── Escúchalo en Vivo ───">─── Hear It Live ───</h2>
+            <p style="color: var(--gray); margin-top: 0.5rem;" data-en="Pick an industry. Call the number. That's what your business sounds like." data-es="Escoge una industria. Llama al número. Así suena tu negocio.">Pick an industry. Call the number. That's what your business sounds like.</p>
         </div>
+
+        <div class="demo-grid">
+            <!-- Tourism -->
+            <div class="demo-card">
+                <div class="demo-card-header tourism">
+                    <span class="demo-icon">🌴</span>
+                    <h3 data-en="Tourism" data-es="Turismo">Tourism</h3>
+                </div>
+                <div class="demo-card-body">
+                    <p data-en="Full concierge — restaurants, hotels, beaches, attractions." data-es="Concierge completo — restaurantes, hoteles, playas, atracciones.">Full concierge — restaurants, hotels, beaches, attractions.</p>
+                    <a href="tel:+17874686336" class="demo-number">(787) 468-6336</a>
+                    <span class="demo-tag">Bori Guides</span>
+                </div>
+            </div>
+
+            <!-- Property Management -->
+            <div class="demo-card">
+                <div class="demo-card-header realestate">
+                    <span class="demo-icon">🏢</span>
+                    <h3 data-en="Property Mgmt" data-es="Admin. Propiedades">Property Mgmt</h3>
+                </div>
+                <div class="demo-card-body">
+                    <p data-en="Maintenance requests, leasing, tenant inquiries." data-es="Solicitudes de mantenimiento, arrendamiento, consultas.">Maintenance requests, leasing, tenant inquiries.</p>
+                    <a href="tel:+17876993044" class="demo-number">(787) 699-3044</a>
+                    <span class="demo-tag" data-en="Demo Line" data-es="Línea Demo">Demo Line</span>
+                </div>
+            </div>
+
+            <!-- Short-Term Rentals -->
+            <div class="demo-card">
+                <div class="demo-card-header realestate">
+                    <span class="demo-icon">🏠</span>
+                    <h3 data-en="Airbnb / STR" data-es="Airbnb / STR">Airbnb / STR</h3>
+                </div>
+                <div class="demo-card-body">
+                    <p data-en="Check-in help, WiFi, house rules, local tips." data-es="Ayuda con check-in, WiFi, reglas, tips locales.">Check-in help, WiFi, house rules, local tips.</p>
+                    <a href="tel:+17874686291" class="demo-number">(787) 468-6291</a>
+                    <span class="demo-tag" data-en="Demo Line" data-es="Línea Demo">Demo Line</span>
+                </div>
+            </div>
+
+            <!-- Paradores -->
+            <div class="demo-card">
+                <div class="demo-card-header hospitality">
+                    <span class="demo-icon">🏨</span>
+                    <h3 data-en="Paradores" data-es="Paradores">Paradores</h3>
+                </div>
+                <div class="demo-card-body">
+                    <p data-en="Reservations, rates, availability, directions." data-es="Reservaciones, tarifas, disponibilidad, direcciones.">Reservations, rates, availability, directions.</p>
+                    <a href="tel:+17874686443" class="demo-number">(787) 468-6443</a>
+                    <span class="demo-tag" data-en="Demo Line" data-es="Línea Demo">Demo Line</span>
+                </div>
+            </div>
+
+            <!-- Boutique Hotels -->
+            <div class="demo-card">
+                <div class="demo-card-header hospitality">
+                    <span class="demo-icon">✨</span>
+                    <h3 data-en="Boutique Hotels" data-es="Hoteles Boutique">Boutique Hotels</h3>
+                </div>
+                <div class="demo-card-body">
+                    <p data-en="Reservations, concierge, amenities, special requests." data-es="Reservaciones, concierge, amenidades, pedidos especiales.">Reservations, concierge, amenities, special requests.</p>
+                    <a href="tel:+17876639401" class="demo-number">(787) 663-9401</a>
+                    <span class="demo-tag" data-en="Demo Line" data-es="Línea Demo">Demo Line</span>
+                </div>
+            </div>
+
+            <!-- Basketball Tourism -->
+            <div class="demo-card">
+                <div class="demo-card-header tourism">
+                    <span class="demo-icon">🏀</span>
+                    <h3 data-en="Basketball" data-es="Baloncesto">Basketball</h3>
+                </div>
+                <div class="demo-card-body">
+                    <p data-en="BSN games, NBA preseason, training camps, legends." data-es="Juegos BSN, pretemporada NBA, campamentos, leyendas.">BSN games, NBA preseason, training camps, legends.</p>
+                    <a href="tel:+17872939597" class="demo-number">(787) 293-9597</a>
+                    <span class="demo-tag">Bori Hoops</span>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 2rem; color: var(--gray);" data-en="All lines are live. Call now — 24/7, bilingual." data-es="Todas las líneas están activas. Llama ahora — 24/7, bilingüe.">All lines are live. Call now — 24/7, bilingual.</p>
     </section>
 
     <!-- Footer -->
