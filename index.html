@@ -53,14 +53,6 @@ section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
 .game-tag{display:inline-block;padding:0.4rem 0.8rem;background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.2);border-radius:20px;font-size:0.7rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
 .schools-section{padding:6rem 2rem;background:linear-gradient(180deg,transparent,rgba(255,215,0,0.03),transparent)}
 .schools-inner{max-width:900px;margin:0 auto;text-align:center}
-.school-card{background:var(--card-bg);border:2px solid rgba(0,217,165,0.2);border-radius:24px;padding:3rem 2rem;margin-top:3rem;position:relative;overflow:hidden}
-.school-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--gold))}
-.school-icon{font-size:4rem;margin-bottom:1.5rem}
-.school-card h3{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:2px;margin-bottom:1rem}
-.school-card p{color:var(--gray-300);font-size:1.1rem;max-width:600px;margin:0 auto 2rem;line-height:1.7}
-.school-phone{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:1px;margin-bottom:0.5rem}
-.school-phone a{text-decoration:none;background:linear-gradient(135deg,var(--gold),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.school-label{color:var(--gray-400);font-size:0.9rem;margin-bottom:1.5rem}
 .school-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;margin-top:2rem}
 .school-tag{padding:0.5rem 1rem;background:rgba(0,217,165,0.1);border:1px solid rgba(0,217,165,0.2);border-radius:30px;font-size:0.8rem;font-weight:600;color:var(--teal)}
 .partners-section{padding:6rem 2rem;text-align:center}
@@ -78,7 +70,7 @@ section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
 .footer-links a{color:var(--gray-400);text-decoration:none;font-size:0.9rem;transition:color 0.3s}
 .footer-links a:hover{color:var(--gold)}
 .footer-copy{font-size:0.8rem;color:var(--gray-500)}
-@media(max-width:768px){.nav{padding:1rem}.nav-links{display:none}.hero{padding:7rem 1.5rem 4rem}.hero-cta{flex-direction:column}.school-phone{font-size:2rem}}
+@media(max-width:768px){.nav{padding:1rem}.nav-links{display:none}.hero{padding:7rem 1.5rem 4rem}.hero-cta{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -156,20 +148,11 @@ section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
     <h2 class="section-title" id="schoolsTitle">ESPORTS FOR YOUR SCHOOL</h2>
     <p class="section-sub" style="margin:0 auto" id="schoolsSub">Bring competitive gaming and cognitive training to your students. Full curriculum integration, after-school leagues, and equipment support.</p>
     
-    <div class="school-card">
-      <div class="school-icon">🎓</div>
-      <h3 id="schoolCardTitle">SCHOOL PROGRAMS HOTLINE</h3>
-      <p id="schoolCardDesc">Talk to us about bringing esports to your school. Curriculum integration, after-school leagues, equipment packages, and funding guidance.</p>
-      <div class="school-phone"><a href="tel:+17875582312">(787) 558-2312</a></div>
-      <div class="school-label" id="schoolCardLabel">Call for K-12, Charter, and Private School Programs</div>
-      <a href="tel:+17875582312" class="btn-primary">📞 <span id="schoolCta">Call Now</span></a>
-      
-      <div class="school-tags">
-        <span class="school-tag" id="tag1">Cognitive Training</span>
-        <span class="school-tag" id="tag2">Esports Leagues</span>
-        <span class="school-tag" id="tag3">STEM Integration</span>
-        <span class="school-tag" id="tag4">Focus & Discipline</span>
-      </div>
+    <div class="school-tags">
+      <span class="school-tag" id="tag1">Cognitive Training</span>
+      <span class="school-tag" id="tag2">Esports Leagues</span>
+      <span class="school-tag" id="tag3">STEM Integration</span>
+      <span class="school-tag" id="tag4">Focus & Discipline</span>
     </div>
   </div>
 </section>
@@ -205,8 +188,8 @@ section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
 <script>
 (function(){
 var L='en',T={
-en:{heroBadge:'Cognitive Performance Training',heroTitle1:'TRAIN YOUR BRAIN.',heroTitle2:'COMPETE AT THE NEXT LEVEL.',heroSub:"Esports cognitive training games designed to sharpen reaction time, pattern recognition, and mental agility. Powered by La Voz PR.",ctaGames:'Play the Games',ctaSchools:'School Programs',gamesLabel:'Cognitive Training',gamesTitle:'FIVE GAMES. ONE GOAL.',gamesSub:'Each game targets a different cognitive skill essential for esports performance.',game1Desc:'Lightning-fast reaction training. Hit targets the moment they appear.',game1Tag:'Reaction Time',game2Desc:'Memory sequence challenges. Remember and repeat increasingly complex patterns.',game2Tag:'Memory',game3Desc:'Split-second decision making. React to the right stimulus, ignore the rest.',game3Tag:'Decision Speed',game4Desc:'Pattern recognition training. Spot and repeat visual sequences under pressure.',game4Tag:'Pattern Recognition',game5Desc:'Rhythm and timing mastery. Sync your actions to the beat with precision.',game5Tag:'Timing',schoolsLabel:'School Programs',schoolsTitle:'ESPORTS FOR YOUR SCHOOL',schoolsSub:'Bring competitive gaming and cognitive training to your students. Full curriculum integration, after-school leagues, and equipment support.',schoolCardTitle:'SCHOOL PROGRAMS HOTLINE',schoolCardDesc:'Talk to us about bringing esports to your school. Curriculum integration, after-school leagues, equipment packages, and funding guidance.',schoolCardLabel:'Call for K-12, Charter, and Private School Programs',schoolCta:'Call Now',tag1:'Cognitive Training',tag2:'Esports Leagues',tag3:'STEM Integration',tag4:'Focus & Discipline',partnersLabel:'Partners',partnersTitle:'BUILDING THE FUTURE OF ESPORTS',partnerDesc:'Official partner for competitive esports programming and school league development across Puerto Rico.',partnerCta:'VIEW SCHOOL PROPOSAL →',ctaTitle:'READY TO LEVEL UP?',ctaSub:"Experience La Voz PR's AI call center technology. Call our demo agent and see what's possible.",ctaDemo:'Try the Live Demo'},
-es:{heroBadge:'Entrenamiento Cognitivo',heroTitle1:'ENTRENA TU MENTE.',heroTitle2:'COMPITE AL SIGUIENTE NIVEL.',heroSub:'Juegos de entrenamiento cognitivo para esports diseñados para mejorar tiempo de reacción, reconocimiento de patrones y agilidad mental.',ctaGames:'Jugar',ctaSchools:'Programas Escolares',gamesLabel:'Entrenamiento Cognitivo',gamesTitle:'CINCO JUEGOS. UN OBJETIVO.',gamesSub:'Cada juego entrena una habilidad cognitiva esencial para el rendimiento en esports.',game1Desc:'Entrenamiento de reacción ultrarrápida. Golpea los objetivos al instante.',game1Tag:'Tiempo de Reacción',game2Desc:'Desafíos de secuencias de memoria. Recuerda y repite patrones cada vez más complejos.',game2Tag:'Memoria',game3Desc:'Decisiones en fracciones de segundo. Reacciona al estímulo correcto, ignora el resto.',game3Tag:'Velocidad de Decisión',game4Desc:'Entrenamiento de reconocimiento de patrones bajo presión.',game4Tag:'Reconocimiento',game5Desc:'Dominio del ritmo y el timing. Sincroniza tus acciones al compás.',game5Tag:'Timing',schoolsLabel:'Programas Escolares',schoolsTitle:'ESPORTS PARA TU ESCUELA',schoolsSub:'Lleva gaming competitivo y entrenamiento cognitivo a tus estudiantes. Integración curricular, ligas after-school y equipamiento.',schoolCardTitle:'LÍNEA DE PROGRAMAS ESCOLARES',schoolCardDesc:'Habla con nosotros sobre traer esports a tu escuela. Integración curricular, ligas, equipamiento y guía de financiamiento.',schoolCardLabel:'Llama para programas K-12, Charter y Escuelas Privadas',schoolCta:'Llamar Ahora',tag1:'Entrenamiento Cognitivo',tag2:'Ligas Esports',tag3:'Integración STEM',tag4:'Enfoque y Disciplina',partnersLabel:'Socios',partnersTitle:'CONSTRUYENDO EL FUTURO DEL ESPORTS',partnerDesc:'Socio oficial para programación competitiva de esports y desarrollo de ligas escolares en Puerto Rico.',partnerCta:'VER PROPUESTA ESCOLAR →',ctaTitle:'¿LISTO PARA SUBIR DE NIVEL?',ctaSub:'Experimenta la tecnología de call center AI de La Voz PR. Llama a nuestro agente demo.',ctaDemo:'Probar el Demo'}
+en:{heroBadge:'Cognitive Performance Training',heroTitle1:'TRAIN YOUR BRAIN.',heroTitle2:'COMPETE AT THE NEXT LEVEL.',heroSub:"Esports cognitive training games designed to sharpen reaction time, pattern recognition, and mental agility. Powered by La Voz PR.",ctaGames:'Play the Games',ctaSchools:'School Programs',gamesLabel:'Cognitive Training',gamesTitle:'FIVE GAMES. ONE GOAL.',gamesSub:'Each game targets a different cognitive skill essential for esports performance.',game1Desc:'Lightning-fast reaction training. Hit targets the moment they appear.',game1Tag:'Reaction Time',game2Desc:'Memory sequence challenges. Remember and repeat increasingly complex patterns.',game2Tag:'Memory',game3Desc:'Split-second decision making. React to the right stimulus, ignore the rest.',game3Tag:'Decision Speed',game4Desc:'Pattern recognition training. Spot and repeat visual sequences under pressure.',game4Tag:'Pattern Recognition',game5Desc:'Rhythm and timing mastery. Sync your actions to the beat with precision.',game5Tag:'Timing',schoolsLabel:'School Programs',schoolsTitle:'ESPORTS FOR YOUR SCHOOL',schoolsSub:'Bring competitive gaming and cognitive training to your students. Full curriculum integration, after-school leagues, and equipment support.',tag1:'Cognitive Training',tag2:'Esports Leagues',tag3:'STEM Integration',tag4:'Focus & Discipline',partnersLabel:'Partners',partnersTitle:'BUILDING THE FUTURE OF ESPORTS',partnerDesc:'Official partner for competitive esports programming and school league development across Puerto Rico.',partnerCta:'VIEW SCHOOL PROPOSAL →',ctaTitle:'READY TO LEVEL UP?',ctaSub:"Experience La Voz PR's AI call center technology. Call our demo agent and see what's possible.",ctaDemo:'Try the Live Demo'},
+es:{heroBadge:'Entrenamiento Cognitivo',heroTitle1:'ENTRENA TU MENTE.',heroTitle2:'COMPITE AL SIGUIENTE NIVEL.',heroSub:'Juegos de entrenamiento cognitivo para esports diseñados para mejorar tiempo de reacción, reconocimiento de patrones y agilidad mental.',ctaGames:'Jugar',ctaSchools:'Programas Escolares',gamesLabel:'Entrenamiento Cognitivo',gamesTitle:'CINCO JUEGOS. UN OBJETIVO.',gamesSub:'Cada juego entrena una habilidad cognitiva esencial para el rendimiento en esports.',game1Desc:'Entrenamiento de reacción ultrarrápida. Golpea los objetivos al instante.',game1Tag:'Tiempo de Reacción',game2Desc:'Desafíos de secuencias de memoria. Recuerda y repite patrones cada vez más complejos.',game2Tag:'Memoria',game3Desc:'Decisiones en fracciones de segundo. Reacciona al estímulo correcto, ignora el resto.',game3Tag:'Velocidad de Decisión',game4Desc:'Entrenamiento de reconocimiento de patrones bajo presión.',game4Tag:'Reconocimiento',game5Desc:'Dominio del ritmo y el timing. Sincroniza tus acciones al compás.',game5Tag:'Timing',schoolsLabel:'Programas Escolares',schoolsTitle:'ESPORTS PARA TU ESCUELA',schoolsSub:'Lleva gaming competitivo y entrenamiento cognitivo a tus estudiantes. Integración curricular, ligas after-school y equipamiento.',tag1:'Entrenamiento Cognitivo',tag2:'Ligas Esports',tag3:'Integración STEM',tag4:'Enfoque y Disciplina',partnersLabel:'Socios',partnersTitle:'CONSTRUYENDO EL FUTURO DEL ESPORTS',partnerDesc:'Socio oficial para programación competitiva de esports y desarrollo de ligas escolares en Puerto Rico.',partnerCta:'VER PROPUESTA ESCOLAR →',ctaTitle:'¿LISTO PARA SUBIR DE NIVEL?',ctaSub:'Experimenta la tecnología de call center AI de La Voz PR. Llama a nuestro agente demo.',ctaDemo:'Probar el Demo'}
 };
 function u(){Object.keys(T.en).forEach(function(k){var e=document.getElementById(k);if(e)e.textContent=T[L][k]||T.en[k]});document.getElementById('langEN').classList.toggle('active',L==='en');document.getElementById('langES').classList.toggle('active',L==='es')}
 document.getElementById('langEN').onclick=function(){L='en';localStorage.setItem('lavozpr-lang','en');u()};
